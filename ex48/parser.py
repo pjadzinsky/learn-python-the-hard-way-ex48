@@ -49,7 +49,7 @@ def parse_object(word_list):
     elif next_word == 'direction':
         return match(word_list, 'direction')
     else:
-        raise ParseError("Exptected a noun or direction next.")
+        raise ParserError("Exptected a noun or direction next.")
 
 def parse_subject(word_list):
     skip(word_list, 'stop')

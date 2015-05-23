@@ -27,3 +27,19 @@ def test_corret_sentences():
     sentence2.subject = 'player'
 
     assert_equal(sentence1.object, sentence2.object)
+    
+    # test simple case 3:
+    sentence = "a bear eat the princess in a farm"  # farm is not in the lexicon
+    sentence1 = parse_sentence(scan(sentence))
+
+    sentence2 = Sentence((0,'a'), (1,'a'), (2,'a'))
+    sentence2.object = 'princess'
+    sentence2.verb = 'eat'
+    sentence2.subject = 'bear'
+
+    assert_equal(sentence1.object, sentence2.object)
+
+def test_raise_exception():
+    sentence = "eat honey"  # honey is not in the lexicon
+
+    assert_raises(ParserError, parse_sentence, scan(sentence))
